@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAMNEWTON COMPUTERS TECHNOLOGY</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- ===== FULL WIDTH HEADER ===== -->
+    <header>
+        <div class="header-flex">
+            <div class="logo">
+                <h1>SAMNEWTON <span>COMPUTERS</span></h1>
+                <small>TECHNOLOGY · ICT SOLUTIONS</small>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="/dashboard" class="admin-btn">Admin</a></li>
+                </ul>
+            </nav>
+            <button class="mobile-menu-btn" id="mobileMenuBtn"><i class="fas fa-bars"></i></button>
+        </div>
+    </header>
+
+    <!-- ===== HERO SECTION ===== -->
+    <section class="hero">
+        <div class="hero-content">
+            <h2>ICT Solutions · Sales · Repair</h2>
+            <p>Computer Accessories · CCTV · Networking · Data Recovery · Enterprise Setups</p>
+            <div class="badge-group">
+                <span class="badge"><i class="fas fa-check-circle"></i> 15+ Years</span>
+                <span class="badge"><i class="fas fa-users"></i> 250+ Clients</span>
+                <span class="badge"><i class="fas fa-laptop"></i> 24/7 Support</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== MAIN CONTENT ===== -->
+    <div class="container" id="main-content">
+        <!-- About -->
+        <section id="about">
+            <div class="section-title"><i class="fas fa-info-circle"></i> About Us</div>
+            <p><strong>SAMNEWTON COMPUTERS TECHNOLOGY</strong> – delivering premium ICT services from hardware sales to enterprise networking. We partner with businesses to secure, connect, and grow.</p>
+            <div class="mission-box">
+                <h4><i class="fas fa-bullseye"></i> Our Mission</h4>
+                <p>Empower organizations with reliable, future-ready technology. We combine technical excellence with personalized support.</p>
+            </div>
+        </section>
+
+        <!-- Services -->
+        <section id="services">
+            <div class="section-title"><i class="fas fa-tools"></i> Our Services</div>
+            <div class="grid-2col" id="services-grid"></div>
+        </section>
+
+        <!-- Projects -->
+        <section id="projects">
+            <div class="section-title"><i class="fas fa-project-diagram"></i> Projects</div>
+            <div class="grid-2col" id="projects-grid"></div>
+        </section>
+
+        <!-- Products -->
+        <section id="products">
+            <div class="section-title"><i class="fas fa-box"></i> Our Products</div>
+            <div id="products-list"></div>
+        </section>
+
+        <!-- Consultant -->
+        <section id="consultant">
+            <div class="section-title"><i class="fas fa-user-tie"></i> Consultant</div>
+            <div id="consultant-card"></div>
+        </section>
+
+        <!-- Support / Ticket -->
+        <section id="support">
+            <div class="section-title"><i class="fas fa-headset"></i> Support</div>
+            <div class="ticket-area">
+                <h4><i class="fas fa-ticket-alt"></i> Submit a Support Ticket</h4>
+                <div class="ticket-input-group">
+                    <input type="text" id="ticketName" placeholder="Your Name">
+                    <input type="email" id="ticketEmail" placeholder="Your Email">
+                    <input type="text" id="ticketService" placeholder="Service Needed">
+                    <textarea id="ticketMessage" placeholder="Describe your issue..."></textarea>
+                    <button id="submitTicketBtn"><i class="fas fa-paper-plane"></i> Submit Ticket</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact -->
+        <section id="contact">
+            <div class="section-title"><i class="fas fa-address-card"></i> Contact Us</div>
+            <div id="contact-details"></div>
+        </section>
+    </div>
+
+    <!-- ===== FULL WIDTH FOOTER ===== -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <h4>SAMNEWTON COMPUTERS</h4>
+                <p>Technology · ICT Solutions</p>
+                <p class="footer-tagline">Sales · Repair · Networking</p>
+            </div>
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <a href="#services">Services</a>
+                <a href="#projects">Projects</a>
+                <a href="#contact">Contact</a>
+                <a href="/dashboard">Admin</a>
+            </div>
+            <div class="footer-social" id="social-links">
+                <h4>Connect With Us</h4>
+            </div>
+            <div class="footer-contact">
+                <h4>Contact</h4>
+                <p><i class="fas fa-envelope"></i> info@samnewton.com</p>
+                <p><i class="fas fa-phone"></i> +234 (070) 6615-9151</p>
+                <p><i class="fas fa-map-marker-alt"></i> #5 Igwebuike Road, Awka, Anambra State</p>
+            </div>
+        </div>
+        <div class="copy">© 2026 SAMNEWTON COMPUTERS TECHNOLOGY. All rights reserved.</div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
