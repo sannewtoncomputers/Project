@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAMNEWTON · Admin Dashboard</title>
+    <style>
+        /* ===== RESET ===== */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f0f2f5;
+            color: #1a2a3a;
+            font-size: 14px;
+        }
+
+        /* ===== HEADER - FULL WIDTH, NO GAPS, NO ROUNDED ===== */
+        .header {
+            background: #0a1628;
+            color: white;
+            padding: 12px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+        .header h2 { 
+            font-size: 1.1rem;
+            letter-spacing: 0.5px;
+        }
+        .header h2 span { color: #4a9eff; }
+        .header a {
+            color: #b0c8dc;
+            text-decoration: none;
+            font-size: 0.85rem;
+        }
+        .header a:hover { color: white; }
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+        }
+        #logout-btn {
+            background: #dc3545;
+            color: white;
+            border: none;
+            padding: 6px 18px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            border-radius: 0px !important;
+        }
+        #logout-btn:hover { background: #c82333; }
+        .back-link { color: #b0c8dc; text-decoration: none; font-size: 0.85rem; }
+        .back-link:hover { color: white; }
+
+        /* ===== CONTAINER ===== */
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+
+        /* ===== LOGIN BOX ===== */
+        .login-box {
+            max-width: 380px;
+            margin: 60px auto;
+            background: white;
+            padding: 28px;
+            border-radius: 0px !important;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+            text-align: center;
+        }
+        .login-box h3 { font-size: 1.2rem; margin-bottom: 4px; color: #0a1628; }
+
+        /* ===== FORM ELEMENTS ===== */
+        input, button, textarea {
+            width: 100%;
+            padding: 10px 12px;
+            margin: 6px 0;
+            border: 1px solid #ddd;
+            border-radius: 0px !important;
+            font-size: 0.95rem;
+            font-family: inherit;
+        }
+        button {
+            background: #0a1628;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        button:hover { background: #1a3a5a; }
+        button:disabled { opacity: 0.5; cursor: not-allowed; }
+        .hidden { display: none !important; }
+
+        /* ===== MESSAGE CARDS - NO ROUNDED ===== */
+        .card {
+            background: white;
+            padding: 16px;
+            margin-bottom: 14px;
+            border-left: 4px solid #0a1628;
+            box-shadow: 0 1px 6px rgba(0,0,0,0.04);
+            border-radius: 0px !important;
+        }
+        .meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            color: #666;
+            margin-bottom: 6px;
+            flex-wrap: wrap;
+        }
+        .badge {
+            background: #e6f0fa;
+            color: #0a1628;
+            padding: 2px 10px;
+            font-weight: 600;
+            font-size: 0.75rem;
+            display: inline-block;
+            border-radius: 0px !important;
+        }
+        .badge.replied {
+            background: #28a745;
+            color: white;
+        }
+        .msg-body {
+            background: #f8f9fa;
+            padding: 10px 14px;
+            margin: 8px 0 12px 0;
+            border: 1px dashed #ddd;
+            font-size: 0.9rem;
+            border-radius: 0px !important;
+        }
+        .counter {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 14px;
+            color: #0a1628;
+        }
+        .btn-reply {
+            width: auto;
+            padding: 4px 16px;
+            background: #e8a020;
+            color: #1a1a2a;
+            font-size: 0.8rem;
+            font-weight: 600;
+            border-radius: 0px !important;
+        }
+        .btn-reply:hover { background: #d4901a; }
+        .btn-reply:disabled { opacity: 0.5; cursor: not-allowed; }
+
+        /* ===== MODAL ===== */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.4);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        .modal-content {
+            background: white;
+            padding: 24px;
+            width: 92%;
+            max-width: 500px;
+            border-radius: 0px !important;
+        }
+        .modal-content h3 { font-size: 1.1rem; margin-bottom: 4px; color: #0a1628; }
+
+        /* ===== TOAST ===== */
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            padding: 12px 22px;
+            color: white;
+            z-index: 2000;
+            animation: slideIn 0.3s ease;
+            font-size: 0.9rem;
+            border-radius: 0px !important;
+        }
+        .toast.success { background: #28a745; }
+        .toast.error { background: #dc3545; }
+        .toast.info { background: #0a1628; }
+        @keyframes slideIn {
+            from { transform: translateY(60px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .flex-row { display: flex; gap: 8px; }
+        .flex-row button { flex: 1; }
+        label { font-weight: 600; display: block; font-size: 0.85rem; margin-top: 4px; color: #0a1628; }
+        #login-err { font-size: 0.85rem; }
+        #reply-feedback { font-size: 0.9rem; }
+        .empty-msg { text-align: center; color: #888; padding: 30px; }
+
+        /* ===== MOBILE RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .header { padding: 12px 20px; }
+            .header h2 { font-size: 0.95rem; }
+        }
+
+        @media (max-width: 480px) {
+            .header { padding: 10px 16px; flex-wrap: wrap; gap: 8px; }
+            .header h2 { font-size: 0.85rem; }
+            .header-right { gap: 10px; }
+            .container { padding: 0 12px; }
+            .card { padding: 12px; }
+            .meta { flex-direction: column; gap: 2px; }
+            .modal-content { padding: 16px; }
+            .login-box { padding: 20px; margin: 30px auto; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h2>📊 SAMNEWTON COMPUTERS<span>: SysAdmin</span></h2>
+        <div class="header-right">
+            <a href="/" class="back-link">← Back to Site</a>
+            <button id="logout-btn" class="hidden">Logout</button>
+        </div>
+    </div>
+
+    <div class="container">
+        <div id="auth-gate" class="login-box">
+            <h3>Admin Login</h3>
+            <p style="color: #666; font-size: 0.85rem; margin-bottom: 10px;">Enter your secure password</p>
+            <input type="password" id="admin-pass" placeholder="Enter Password">
+            <button id="login-btn">Login</button>
+            <div id="login-err" style="color: red; margin-top: 8px;"></div>
+        </div>
+
+        <div id="dashboard-panel" class="hidden">
+            <div class="counter">📬 Messages: <span id="msg-count">0</span></div>
+            <div id="messages-stream"></div>
+        </div>
+    </div>
+
+    <div id="reply-modal" class="modal hidden">
+        <div class="modal-content">
+            <h3>📧 Compose Reply</h3>
+            <p style="font-size: 0.9rem; color: #555;">To: <strong id="modal-target-email">client@email.com</strong></p>
+            <label>Subject</label>
+            <input type="text" id="reply-subject" value="Re: Technical Consultation">
+            <label>Message</label>
+            <textarea id="reply-body" rows="4" placeholder="Type your response..."></textarea>
+            <div class="flex-row" style="margin-top: 10px;">
+                <button id="send-reply-btn">Send Reply</button>
+                <button id="close-modal-btn" style="background: #6c757d;">Cancel</button>
+            </div>
+            <div id="reply-feedback" style="margin-top: 8px; font-weight: 600; text-align: center;"></div>
+        </div>
+    </div>
+
+    <script>
+        let sessionPassword = "";
+        let currentMessages = [];
+        let currentEmail = "";
+
+        const loginBtn = document.getElementById('login-btn');
+        const logoutBtn = document.getElementById('logout-btn');
+        const closeModalBtn = document.getElementById('close-modal-btn');
+        const sendReplyBtn = document.getElementById('send-reply-btn');
+
+        loginBtn.addEventListener('click', login);
+        logoutBtn.addEventListener('click', logout);
+        closeModalBtn.addEventListener('click', closeModal);
+        sendReplyBtn.addEventListener('click', sendReply);
+
+        document.getElementById('admin-pass').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') login();
+        });
+
+        async function login() {
+            const pass = document.getElementById('admin-pass').value.trim();
+            const err = document.getElementById('login-err');
+
+            if (!pass) {
+                err.textContent = "Please enter a password.";
+                return;
+            }
+
+            err.textContent = "Checking...";
+            err.style.color = "orange";
+            loginBtn.disabled = true;
+
+            try {
+                const res = await fetch('/api/admin/messages', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ password: pass })
+                });
+                const data = await res.json();
+
+                if (data.success) {
+                    sessionPassword = pass;
+                    currentMessages = data.messages || [];
+                    document.getElementById('auth-gate').classList.add('hidden');
+                    document.getElementById('dashboard-panel').classList.remove('hidden');
+                    document.getElementById('logout-btn').classList.remove('hidden');
+                    renderMessages(currentMessages);
+                    showToast('✅ Login successful!', 'success');
+                } else {
+                    err.textContent = data.error || "Invalid password.";
+                    err.style.color = "red";
+                }
+            } catch (e) {
+                err.textContent = "Server not running. Start with: npm start";
+                err.style.color = "red";
+            } finally {
+                loginBtn.disabled = false;
+            }
+        }
+
+        function renderMessages(messages) {
+            const stream = document.getElementById('messages-stream');
+            document.getElementById('msg-count').textContent = messages.length;
+            stream.innerHTML = "";
+
+            if (messages.length === 0) {
+                stream.innerHTML = "<div class='empty-msg'>No messages found.</div>";
+                return;
+            }
+
+            messages.forEach((msg, index) => {
+                const div = document.createElement('div');
+                div.className = 'card';
+                const repliedBadge = msg.replied ? '<span class="badge replied">✓ Replied</span>' : '';
+                div.innerHTML = `
+                    <div class="meta">
+                        <div><strong>${escapeHtml(msg.name || 'Anonymous')}</strong> (${escapeHtml(msg.email)})</div>
+                        <div>${escapeHtml(msg.date || 'Just now')}</div>
+                    </div>
+                    <div style="margin: 4px 0;">
+                        <span class="badge">${escapeHtml(msg.service || 'General')}</span>
+                        ${repliedBadge}
+                    </div>
+                    <div class="msg-body">"${escapeHtml(msg.message || 'No message')}"</div>
+                    <button class="btn-reply" onclick="openReply('${escapeHtml(msg.email)}', '${escapeHtml(msg.service || 'Inquiry')}', ${index})" ${msg.replied ? 'disabled' : ''}>
+                        ${msg.replied ? '✓ Replied' : '✉️ Reply'}
+                    </button>
+                `;
+                stream.appendChild(div);
+            });
+        }
+
+        function openReply(email, service, index) {
+            currentEmail = email;
+            document.getElementById('modal-target-email').textContent = email;
+            document.getElementById('reply-subject').value = `Re: ${service}`;
+            document.getElementById('reply-body').value = '';
+            document.getElementById('reply-feedback').textContent = '';
+            document.getElementById('reply-modal').classList.remove('hidden');
+            document.getElementById('reply-modal').dataset.index = index;
+        }
+
+        function closeModal() {
+            document.getElementById('reply-modal').classList.add('hidden');
+        }
+
+        async function sendReply() {
+            const subject = document.getElementById('reply-subject').value.trim();
+            const message = document.getElementById('reply-body').value.trim();
+            const feedback = document.getElementById('reply-feedback');
+
+            if (!message) {
+                feedback.textContent = 'Please type a message.';
+                feedback.style.color = 'red';
+                return;
+            }
+
+            feedback.textContent = 'Sending...';
+            feedback.style.color = 'orange';
+            sendReplyBtn.disabled = true;
+
+            try {
+                const res = await fetch('/api/admin/reply', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        password: sessionPassword,
+                        email: currentEmail,
+                        subject: subject,
+                        message: message
+                    })
+                });
+                const data = await res.json();
+
+                if (data.success) {
+                    feedback.textContent = '✅ Reply sent!';
+                    feedback.style.color = 'green';
+                    
+                    const index = parseInt(document.getElementById('reply-modal').dataset.index);
+                    if (!isNaN(index) && currentMessages[index]) {
+                        currentMessages[index].replied = true;
+                        renderMessages(currentMessages);
+                    }
+                    
+                    showToast('✅ Reply sent successfully!', 'success');
+                    setTimeout(closeModal, 1200);
+                } else {
+                    feedback.textContent = '❌ ' + (data.error || 'Failed to send.');
+                    feedback.style.color = 'red';
+                    showToast('❌ ' + (data.error || 'Failed to send'), 'error');
+                }
+            } catch (e) {
+                console.error('Reply error:', e);
+                feedback.textContent = '❌ Server error.';
+                feedback.style.color = 'red';
+                showToast('❌ Server error', 'error');
+            } finally {
+                sendReplyBtn.disabled = false;
+            }
+        }
+
+        function logout() {
+            sessionPassword = '';
+            currentMessages = [];
+            document.getElementById('auth-gate').classList.remove('hidden');
+            document.getElementById('dashboard-panel').classList.add('hidden');
+            document.getElementById('logout-btn').classList.add('hidden');
+            document.getElementById('admin-pass').value = '';
+            document.getElementById('messages-stream').innerHTML = '';
+            document.getElementById('msg-count').textContent = '0';
+            showToast('🔒 Logged out', 'info');
+        }
+
+        function escapeHtml(str) {
+            if (!str) return '';
+            const div = document.createElement('div');
+            div.textContent = str;
+            return div.innerHTML;
+        }
+
+        function showToast(message, type) {
+            const existing = document.querySelector('.toast');
+            if (existing) existing.remove();
+            const toast = document.createElement('div');
+            toast.className = `toast ${type}`;
+            toast.textContent = message;
+            document.body.appendChild(toast);
+            setTimeout(() => {
+                toast.style.opacity = '0';
+                setTimeout(() => toast.remove(), 500);
+            }, 3000);
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeModal();
+        });
+
+        replyModal.addEventListener('click', (e) => {
+            if (e.target === replyModal) closeModal();
+        });
+
+        console.log('🚀 SAMNEWTON Admin Dashboard ready.');
+        console.log('🔑 Password: admin123');
+    </script>
+</body>
+</html>

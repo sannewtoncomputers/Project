@@ -1,0 +1,47 @@
+[
+  {
+    "id": 1784127178226,
+    "name": "Obinna",
+    "email": "obinna@gmailcom",
+    "service": "enterprise network setup",
+    "message": "send the cost of new tenda access point. i need 9 pieces",
+    "date": "7/15/2026, 3:52:58 PM",
+    "replied": true
+  },
+  {
+    "id": 1784122611346,
+    "name": "EMA",
+    "email": "sasmanindeed@gmail.com",
+    "service": "Network setup and camera maintenance",
+    "message": "pls sir, our office need your service on the above mention service",
+    "date": "7/15/2026, 2:36:51 PM",
+    "replied": true
+  },
+  {
+    "id": 1,
+    "name": "John Okonkwo",
+    "email": "john.o@example.com",
+    "service": "Computer Repair",
+    "message": "My laptop is not booting up. Please help.",
+    "date": "7/15/2026, 2:29:51 PM",
+    "replied": true
+  },
+  {
+    "id": 2,
+    "name": "Sarah Adeyemi",
+    "email": "sarah.a@example.com",
+    "service": "CCTV Installation",
+    "message": "Need quote for 8 cameras at our office.",
+    "date": "7/15/2026, 2:29:56 PM",
+    "replied": true
+  },
+  {
+    "id": 3,
+    "name": "Michael Okafor",
+    "email": "michael.o@example.com",
+    "service": "Network Setup",
+    "message": "Need help with office network setup.",
+    "date": "7/15/2026, 2:29:56 PM",
+    "replied": true
+  }
+]

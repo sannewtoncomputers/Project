@@ -1,0 +1,118 @@
+{
+  "services": [
+    {
+      "icon": "fa-laptop",
+      "title": "Computer Repair | Maintenance",
+      "desc": "Hardware diagnostics, OS repair, upgrades, and preventive maintenance for all computer systems."
+    },
+    {
+      "icon": "fa-video",
+      "title": "CCTV Sales | Installation",
+      "desc": "Professional CCTV camera systems, installation, configuration, and ongoing maintenance for security."
+    },
+    {
+      "icon": "fa-network-wired",
+      "title": "LAN | WAN Networking",
+      "desc": "Structured cabling, network switches, routers, and wireless deployments for businesses."
+    },
+    {
+      "icon": "fa-server",
+      "title": "Network Equipment Sales",
+      "desc": "Cisco, MikroTik, switches, firewalls, access points and enterprise networking hardware."
+    },
+    {
+      "icon": "fa-database",
+      "title": "Inventory Software Installation",
+      "desc": "Deploy and configure inventory management systems for retail, warehouses, and businesses."
+    },
+    {
+      "icon": "fa-hdd",
+      "title": "Data Recovery Services",
+      "desc": "Professional data recovery from HDD, SSD, RAID arrays, and external storage devices."
+    },
+    {
+      "icon": "fa-building",
+      "title": "Enterprise Network Setup",
+      "desc": "Design, implementation and optimization of network infrastructure for medium and large businesses."
+    },
+    {
+      "icon": "fa-microchip",
+      "title": "Cisco | MikroTik | Fortinet",
+      "desc": "Configuration, troubleshooting, and maintenance of enterprise networking equipment."
+    },
+    {
+      "icon": "fa-plug",
+      "title": "General ICT Services",
+      "desc": "IT consulting, cloud integration, backup solutions, and comprehensive technology support."
+    }
+  ],
+  "projects": [
+    {
+      "title": "Network Refresh – 150 Nodes",
+      "desc": "Complete LAN & WAN upgrade with Cisco switches and MikroTik routing for a logistics hub."
+    },
+    {
+      "title": "CCTV | Access Control | Installation | Maintenance",
+      "desc": "64-camera IP system with NVR and remote monitoring for a shopping mall complex."
+    },
+    {
+      "title": "Inventory Software Deployment",
+      "desc": "Customized inventory solution with barcode integration for a retail chain (50+ locations)."
+    },
+    {
+      "title": "Data Recovery & Migration",
+      "desc": "Recovered critical data from RAID 5 array and successfully migrated to new SAN storage."
+    }
+  ],
+  "products": [
+    "Computers | Accessories",
+    "Routers | Switches",
+    "Wireless Access Points",
+    "CCTV Camera Kits",
+    "Servers | Storage",
+    "Cables | Panels",
+    "Cisco | MikroTik",
+    "Printers | Consumables",
+    "Trainings"
+  ],
+  "consultant": {
+    "name": "Sampson Nyeneime Clement",
+    "title": "Senior ICT Consultant · 12+ Years",
+    "bio": "Certified Cisco CCNA, MikroTik MTCNA, and enterprise infrastructure specialist. Expert in network design, security, and IT strategy for businesses of all sizes.",
+    "email": "sampson@samnewton.com",
+    "phone": "+234 (070) 6615-9151"
+  },
+  "contact": {
+    "address": "#5 Igwebuike Road, Awka, Anambra State",
+    "phone": "+234 (070) 6615-9151",
+    "email": "info@samnewton.com",
+    "hours": "Mon–Fri: 8:00 AM – 6:00 PM"
+  },
+  "socialMedia": [
+    {
+      "platform": "Facebook",
+      "icon": "fa-facebook",
+      "url": "https://web.facebook.com/"
+    },
+    {
+      "platform": "Twitter",
+      "icon": "fa-twitter",
+      "url": "https://x.com/SamnewtonComput"
+    },
+    {
+      "platform": "LinkedIn",
+      "icon": "fa-linkedin",
+      "url": "#"
+    },
+    {
+      "platform": "Instagram",
+      "icon": "fa-instagram",
+      "url": "https://www.instagram.com/samnewtoncomputers/"
+    },
+    {
+      "platform": "YouTube",
+      "icon": "fa-youtube",
+      "url": "#"
+    }
+  ]
+}
